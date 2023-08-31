@@ -27,7 +27,10 @@ function App() {
   }
 
   const handleSubmitButtonTwo = (event) => {
-
+    if (inputValueTwo) {
+      setHandleButtontwo(!handleButtonTwo)
+    }
+    console.log(handleButtonTwo)
   }
 
   return (
@@ -47,8 +50,8 @@ function App() {
           <img src={require('./assets/see-the-winner.jpg')} />
         </div>
       </div>
-      <div>
-        <div>
+      <div style={{display: 'flex'}}>
+        <div >
           <TextField onChange={handleinputValueOne} value={inputValueOne}
             id='outlined-basic' label='Enter GitHub User' variant='outlined' />
           <Button onClick={handleSubmitButtonOne} 
