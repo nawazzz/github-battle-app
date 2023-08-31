@@ -10,6 +10,11 @@ function App() {
   const [ghDataSecondUser, setGhDataSecondUser] = useState({})
   const [handleButtonOne, setHandleButtonOne] = useState(true)
   const [handleButtonTwo, setHandleButtontwo] = useState(true)
+  const [showResults, setShowResults] = useState(false)
+  const [resultUserOne, setResultUserOne] = useState({})
+  const [resultUserTwo, setResultUserTwo] = useState({})
+  const [totalScoreUserOne, setTotalScoreUserOne] = useState(0)
+  const [totalScoreUserTwo, setTotalScoreUserTwo] = useState(0)
 
   const handleinputValueOne = (event) => {
     setInputValueOne(event.target.value)
@@ -39,6 +44,31 @@ function App() {
       })
     }
     setInputValueTwo('')
+  }
+
+  const handleResults = (event) => {
+    setShowResults(!showResults)
+
+    let objUserOne = {
+      repoCount: ghData.public_repos + 0.5,
+      followersCount: ghData.followers + 1,
+      followingCount: ghData.following + 1
+    }
+
+    let userOneScore = Math.ceil(objUserOne.repoCount + objUserOne.followersCount + objUserOne.followingCount)
+
+    let objUserTwo = {
+      repoCount: ghDataSecondUser.public_repos + 0.5,
+      followersCount: ghDataSecondUser.followers + 1,
+      followingCount: ghDataSecondUser.following + 1
+    }
+
+    let userTwoScore = Math.ceil(objUserTwo.repoCount + objUserTwo.followersCount + objUserTwo.followingCount)
+
+    setResultUserOne(objUserOne)
+    setResultUserTwo(objUserTwo)
+    setTotalScoreUserOne(userOneScore)
+    setTotalScoreUserTwo(userTwoScore)
   }
 
   return (
@@ -75,7 +105,8 @@ function App() {
         </div>
       </div>
       <div style={{display: !handleButtonOne && !handleButtonTwo? 'block': 'none', height: '40px', cursor: 'pointer' }}>
-        <Button variant='outlined'>Battle</Button>
+        <Button variant='outlined' onClick={handleResults}
+          >Battle</Button>
       </div>
       
     </div>
