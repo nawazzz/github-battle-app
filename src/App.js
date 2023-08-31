@@ -74,7 +74,10 @@ function App() {
             style={{ height: '55px' }} variant='outlined'>SUBMIT</Button>
         </div>
       </div>
-
+      <div style={{display: !handleButtonOne && !handleButtonTwo? 'block': 'none', height: '40px', cursor: 'pointer' }}>
+        <Button variant='outlined'>Battle</Button>
+      </div>
+      
     </div>
   );
 }
