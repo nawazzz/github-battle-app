@@ -16,21 +16,29 @@ function App() {
   }
 
   const handleinputValueTwo = (event) => {
-    setInputValueTwo(event.target.value) 
+    setInputValueTwo(event.target.value)
   }
 
   const handleSubmitButtonOne = (event) => {
     if (inputValueOne) {
       setHandleButtonOne(!handleButtonOne)
+      const url = `https://api.github.com/users/${inputValueOne}`
+      fetch(url).then(res => res.json()).then(data => {
+        setGhData(data)
+      })
     }
-    console.log(handleButtonOne)
+    setInputValueOne('')
   }
 
   const handleSubmitButtonTwo = (event) => {
     if (inputValueTwo) {
       setHandleButtontwo(!handleButtonTwo)
+      const url = `https://api.github.com/users/${inputValueTwo}`
+      fetch(url).then(res => res.json()).then(data => {
+        setGhDataSecondUser(data)
+      })
     }
-    console.log(handleButtonTwo)
+    setInputValueTwo('')
   }
 
   return (
@@ -50,11 +58,11 @@ function App() {
           <img src={require('./assets/see-the-winner.jpg')} />
         </div>
       </div>
-      <div style={{display: 'flex'}}>
+      <div style={{ display: 'flex' }}>
         <div >
           <TextField onChange={handleinputValueOne} value={inputValueOne}
             id='outlined-basic' label='Enter GitHub User' variant='outlined' />
-          <Button onClick={handleSubmitButtonOne} 
+          <Button onClick={handleSubmitButtonOne}
             disabled={!inputValueOne}
             style={{ height: '55px' }} variant='outlined'>SUBMIT</Button>
         </div>
