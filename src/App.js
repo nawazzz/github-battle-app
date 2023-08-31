@@ -55,12 +55,14 @@ function App() {
           <TextField onChange={handleinputValueOne} value={inputValueOne}
             id='outlined-basic' label='Enter GitHub User' variant='outlined' />
           <Button onClick={handleSubmitButtonOne} 
+            disabled={!inputValueOne}
             style={{ height: '55px' }} variant='outlined'>SUBMIT</Button>
         </div>
         <div>
           <TextField onChange={handleinputValueTwo} value={inputValueTwo}
             id='outlined-basic' label='Enter GitHub User' variant='outlined' />
           <Button onClick={handleSubmitButtonTwo}
+            disabled={!inputValueTwo}
             style={{ height: '55px' }} variant='outlined'>SUBMIT</Button>
         </div>
       </div>
