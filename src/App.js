@@ -1,5 +1,6 @@
 import './App.css';
-import React, { useState } from 'react';
+import Results from './Results';
+import React, { useEffect, useState } from 'react';
 import { Button, TextField } from '@mui/material';
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
   const [resultUserTwo, setResultUserTwo] = useState({})
   const [totalScoreUserOne, setTotalScoreUserOne] = useState(0)
   const [totalScoreUserTwo, setTotalScoreUserTwo] = useState(0)
+
+  useEffect(() => {
+// By adding the empty array it behaves like componentDidMount method
+  }, [])
 
   const handleinputValueOne = (event) => {
     setInputValueOne(event.target.value)
@@ -108,8 +113,10 @@ function App() {
         <Button variant='outlined' onClick={handleResults}
           >Battle</Button>
       </div>
+      <Results/>
       
     </div>
+    
   );
 }
 
