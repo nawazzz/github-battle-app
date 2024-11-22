@@ -1,0 +1,94 @@
+.inputField {
+    display: flex;
+    gap: '20px';
+    flex: 0 0 20%;
+    width: 100%;
+    @media (max-width: 1250px) {
+        max-width: 100%;
+    }
+    h5 {
+        &::after {
+            color: #E60000;
+            content: '*';
+            margin-left: .125rem;
+        }
+    }
+    input {
+        border-radius: 1.125rem;
+        -webkit-transition: all .15s ease-in-out;
+        transition: all .15s ease-in-out;
+        background: #fff;
+        border: .0625rem solid #756E65;
+        border-radius: .125rem;
+        color: #140000;
+        display: block;
+        margin-bottom: .25rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 1rem;
+        letter-spacing: .00813rem;
+        line-height: 1.125rem;
+        font-weight: 400;
+        padding: .8125rem 0 .25rem .9375rem;
+        height: auto;
+        min-height: 2.75rem;
+        text-align: left;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+        }
+
+
+
+        // transition: all .15s ease-in-out;
+        // background: #fff;
+        // border: .0625rem solid #756E65;
+        // border-radius: .125rem;
+        // color: #140000;
+        // display: block;
+        // margin-bottom: .25rem;
+        // font-family: "DM Sans", sans-serif;
+        // font-size: 1rem;
+        // letter-spacing: .00813rem;
+        // line-height: 1.125rem;
+        // font-weight: 400;
+        // padding: .8125rem .9375rem .25rem;
+        // height: auto;
+        // min-height: 2.75rem;
+        // text-align: left;
+        // width: 100%;
+        // border: .0625rem solid #756E65;
+
+        // :focus-within {
+        //     background: black;
+            
+        // }
+        @media (max-width: 1250px) {
+            padding-right: 0;
+        }
+
+    }
+}
+button {
+    transition: all .15s ease-in-out;
+    background: #fff;
+    border: .0625rem solid #756E65;
+    border-radius: 1.125rem;
+    color: #140000;
+    display: block;
+    margin-bottom: .25rem;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    letter-spacing: .00813rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+    padding: .8125rem .9375rem .4rem;
+    height: auto;
+    min-height: 1.75rem;
+    text-align: center;
+    text-decoration: none;
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}

@@ -1,7 +1,9 @@
-import './App.css';
+import './App.scss';
 import Results from './Results';
 import React, { useEffect, useState } from 'react';
 import { Button, TextField } from '@mui/material';
+import { ChakraProvider, VStack } from '@chakra-ui/react'
+
 
 function App() {
 
@@ -35,6 +37,7 @@ function App() {
       const url = `https://api.github.com/users/${inputValueOne}`
       fetch(url).then(res => res.json()).then(data => {
         setGhData(data)
+        console.log(data)
       })
     }
     setInputValueOne('')
@@ -46,6 +49,7 @@ function App() {
       const url = `https://api.github.com/users/${inputValueTwo}`
       fetch(url).then(res => res.json()).then(data => {
         setGhDataSecondUser(data)
+        console.log(data)
       })
     }
     setInputValueTwo('')
@@ -78,42 +82,47 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Instructions</h1>
-      <div className='heroContainer' style={{ display: 'flex' }}>
+      <h1 style={{textAlign: 'center'}}>Instructions</h1>
+      <div className='heroContainer' style={{ display: 'flex' , justifyContent: 'center', padding: '60px', gap: '25px' }}>
         <div style={{ textAlign: 'center' }}>
           <h3>Enter Two GitHub Users</h3>
-          <img src={require('./assets/enter-two-users.jpg')} />
+          <img src={require('./assets/enter-two-users.jpg')} alt='' />
         </div>
         <div>
           <h3>Battle</h3>
-          <img src={require('./assets/battle.jpg')} />
+          <img src={require('./assets/battle.jpg')} alt='' />
         </div>
         <div>
           <h3>See the Winner</h3>
-          <img src={require('./assets/see-the-winner.jpg')} />
+          <img src={require('./assets/see-the-winner.jpg')} alt='' />
         </div>
       </div>
-      <div style={{ display: 'flex' }}>
-        <div >
-          <TextField onChange={handleinputValueOne} value={inputValueOne}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+        <div className='inputField'>
+          <input onChange={handleinputValueOne} value={inputValueOne}
             id='outlined-basic' label='Enter GitHub User' variant='outlined' />
-          <Button onClick={handleSubmitButtonOne}
+          <button onClick={handleSubmitButtonOne}
             disabled={!inputValueOne}
-            style={{ height: '55px' }} variant='outlined'>SUBMIT</Button>
+            style={{ height: '55px' }} variant='outlined'>SUBMIT</button>
         </div>
-        <div>
-          <TextField onChange={handleinputValueTwo} value={inputValueTwo}
+        <div className='inputField'>
+          <input onChange={handleinputValueTwo} value={inputValueTwo}
             id='outlined-basic' label='Enter GitHub User' variant='outlined' />
-          <Button onClick={handleSubmitButtonTwo}
+          <button onClick={handleSubmitButtonTwo}
             disabled={!inputValueTwo}
-            style={{ height: '55px' }} variant='outlined'>SUBMIT</Button>
+            style={{ height: '55px' }} variant='outlined'>SUBMIT</button>
         </div>
       </div>
       <div style={{display: !handleButtonOne && !handleButtonTwo? 'block': 'none', height: '40px', cursor: 'pointer' }}>
-        <Button variant='outlined' onClick={handleResults}
-          >Battle</Button>
+        <button  onClick={handleResults}
+          >Battle</button>
       </div>
-      <Results/>
+      {/* <Results
+        ghData={ghData} ghDataSecondUser={ghDataSecondUser} inputValueOne={inputValueOne}
+        inputValueTwo={inputValueTwo} handleButtonOne={handleButtonOne} handleButtonTwo={handleButtonTwo}
+        showResults={showResults} resultDataOne={resultUserOne} resultDataTwo={resultUserTwo}
+        totalScoreUserOne={totalScoreUserOne} totalScoreUserTwo={totalScoreUserTwo}
+      /> */}
       
     </div>
     
